@@ -1,5 +1,3 @@
-# PythonCrawler
-
 ## Intro
 基礎Python
 
