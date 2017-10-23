@@ -12,7 +12,6 @@
 - [BeautifulSoup](http://beautifulsoup.readthedocs.io/zh_CN/latest/)
 
 ## 簡單的教學
-- [Codecademy python 基礎教程](https://www.codecademy.com/learn/learn-python)
 - [Pala 爬蟲介紹、演示](http://pala.tw/what-is-web-crawler/)
 - [Jupyter Crawler 範例](http://nbviewer.jupyter.org/gist/bryanyang0528/8bf8a31e6ef67c3118fa)
 
