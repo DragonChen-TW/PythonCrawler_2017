@@ -1,12 +1,11 @@
 # Python crawler
 
-*update: 2017/10/24*
+*update: 2017/10/31*
 
 ## Code Online (gitpage)
 - [基礎python](https://teacher144123.github.io/PythonCrawler/html/basic_python/)
-- 基礎crawler
+- [基礎crawler](https://teacher144123.github.io/PythonCrawler/html/basic_crawler/)
 - 進階crawler
-<!-- - [基礎crawler](https://teacher144123.github.io/PythonCrawler/html/basic_crawler/) -->
 <!-- - [進階crawler](https://teacher144123.github.io/PythonCrawler/html/advanced_crawler/) -->
 
 ## Package docs(供查詢用)

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>2_Logic and Loop</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>1_requests and BeautifulSoup</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -14946,7 +14946,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Python&#22522;&#30990;&#65293;&#27969;&#31243;&#12289;&#21028;&#26039;&#24335;&#12289;&#20989;&#24335;">Python&#22522;&#30990;&#65293;&#27969;&#31243;&#12289;&#21028;&#26039;&#24335;&#12289;&#20989;&#24335;<a class="anchor-link" href="#Python&#22522;&#30990;&#65293;&#27969;&#31243;&#12289;&#21028;&#26039;&#24335;&#12289;&#20989;&#24335;">&#182;</a></h1>
+<h1 id="Crawler&#22522;&#30990;&#65293;requests&#12289;BeautifulSoup">Crawler&#22522;&#30990;&#65293;requests&#12289;BeautifulSoup<a class="anchor-link" href="#Crawler&#22522;&#30990;&#65293;requests&#12289;BeautifulSoup">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14955,25 +14955,16 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="&#30446;&#37636;">&#30446;&#37636;<a class="anchor-link" href="#&#30446;&#37636;">&#182;</a></h2><ul>
-<li><a href="#邏輯判斷">邏輯判斷</a></li>
-<li><a href="#If-Else">If-Else</a></li>
-<li><a href="#While-Loop">While Loop</a></li>
-<li><a href="#For-Loop">For Loop</a></li>
-<li><a href="#Function">Function</a></li>
-<li><a href="#scope">scope</a></li>
-<li><a href="#try-expect">try-expect</a></li>
-<li><a href="#練習">練習</a></li>
-<li><a href="#其他">其他</a></li>
+<li><a href="#requests">Requests</a></li>
+<li><a href="#BeautifulSoup">BeautifulSoup</a><ul>
+<li><a href="#bs物件">bs物件</a></li>
+<li><a href="#find">find</a></li>
+<li><a href="#find_all">find_all</a></li>
+<li><a href="#select">select</a></li>
+</ul>
+</li>
 </ul>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#37007;&#36655;&#21028;&#26039;">&#37007;&#36655;&#21028;&#26039;<a class="anchor-link" href="#&#37007;&#36655;&#21028;&#26039;">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14982,98 +14973,73 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># python 使用 bool 型態的 「True」「False」保留字來表示真假</span>
-<span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 發送我們網路請求(request)的套件</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="c1"># 解析 HTML 語法的套件</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[1]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>bool</pre>
 </div>
-
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>爬第一個網站 <a href="http://pala.tw/class-id-example/">http://pala.tw/class-id-example/</a></li>
+</ul>
 
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">5</span> <span class="o">&lt;</span> <span class="mi">3</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 先把後面會用到的全域變數放在這裡</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://pala.tw/class-id-example/&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;user-agent&#39;</span><span class="p">:</span><span class="s1">&#39;Safari&#39;</span><span class="p">}</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[2]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>False</pre>
 </div>
-
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>user-agent是提供給網站了解使用者的基本資訊（電腦系統、使用哪款瀏覽器...等）<br>
+部分網站會檢查user-agent字串內容來防止惡意爬蟲<br>
+可以從<a href="https://www.whoishostingthis.com/tools/user-agent/">這裡</a>查詢你電腦、瀏覽器的user-agent字串<br>
+或是放入簡單的資訊（有的網站是會檢查user-agent有沒有內容而已 空白的也會給你過XD）</p>
 
 </div>
 </div>
-
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="requests">requests<a class="anchor-link" href="#requests">&#182;</a></h2>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 還記得嗎 ** 是指數</span>
-<span class="mi">9</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="o">**</span><span class="mi">3</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 透過 requests 來幫我傳送 ge t請求</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[3]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -15083,41 +15049,32 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 邏輯上的等於 和 a = 3 的 = 不同</span>
-<span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># post也很簡單</span>
+<span class="c1"># res = requests.post(url,headers=headers)</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[4]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
 </div>
-
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>執行之後，requests會去目標網站，幫你把原始碼抓回來<br>
+res有一些基本的屬性可以使用</p>
 
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">6</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">3</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 回傳狀況是否正常</span>
+<span class="n">res</span><span class="o">.</span><span class="n">ok</span>
 </pre></div>
 
 </div>
@@ -15150,7 +15107,9 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 回傳的狀況的數值</span>
+<span class="c1"># 常用的 200 是 一切順利 404 是 not found</span>
+<span class="n">res</span><span class="o">.</span><span class="n">status_code</span>
 </pre></div>
 
 </div>
@@ -15169,7 +15128,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>False</pre>
+<pre>200</pre>
 </div>
 
 </div>
@@ -15183,7 +15142,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 此回傳的編碼</span>
+<span class="n">res</span><span class="o">.</span><span class="n">encoding</span>
 </pre></div>
 
 </div>
@@ -15202,7 +15162,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
+<pre>&#39;utf-8&#39;</pre>
 </div>
 
 </div>
@@ -15210,36 +15170,14 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="in-&#36939;&#31639;&#23376;">in &#36939;&#31639;&#23376;<a class="anchor-link" href="#in-&#36939;&#31639;&#23376;">&#182;</a></h2>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;xyz&#39;</span><span class="p">]</span>
-<span class="n">e_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">21</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># in 可以判斷前面元素是否在後面的變數、list中</span>
-<span class="mi">8</span> <span class="ow">in</span> <span class="n">d_list</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 把原始碼輸出</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15252,17 +15190,62 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt"></div>
 
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>False</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;en&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;title&gt;辦公室的下午茶&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p id=&#34;老闆&#34; class=&#34;半糖 去冰 珍珠 奶茶&#34;&gt;老闆的半糖去冰珍珠奶茶&lt;/p&gt;
+    &lt;p id=&#34;資深前輩&#34; class=&#34;無糖 去冰 綠茶&#34;&gt;資深前輩的無糖去冰綠茶&lt;/p&gt;
+    &lt;p id=&#34;Pala&#34; class=&#34;無糖 微冰 鐵觀音&#34;&gt;Pala的無糖微冰鐵觀音&lt;/p&gt;
+    &lt;p id=&#34;心儀同事&#34; class=&#34;半糖 去冰 文山青茶&#34;&gt;心儀同事的半糖去冰文山青茶&lt;/p&gt;
+    &lt;p id=&#34;工讀生&#34; class=&#34;半糖 微冰 珍珠 紅茶&#34;&gt;工讀生的半糖微冰珍珠紅茶&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
 </div>
 
 </div>
+</div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>太好了～我們已經取得我們要的 HTML 內容了<br>
+再來是解析 HTML<br>
+找到我們要的內容</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="BeautifulSoup">BeautifulSoup<a class="anchor-link" href="#BeautifulSoup">&#182;</a></h2><p>以下簡稱 bs</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 把 HTML 丟到 bs 裡面，使用 「html」的解析器</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">,</span><span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
 </div>
 </div>
 
@@ -15272,7 +15255,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">8</span> <span class="ow">in</span> <span class="n">e_list</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 可以看到soup會變成一個 bs 物件</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">soup</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15291,7 +15275,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
+<pre>bs4.BeautifulSoup</pre>
 </div>
 
 </div>
@@ -15299,13 +15283,31 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="bs&#29289;&#20214;">bs&#29289;&#20214;<a class="anchor-link" href="#bs&#29289;&#20214;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>bs 物件的一些基本屬性</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;x&#39;</span> <span class="ow">in</span> <span class="n">d_list</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 標題標籤</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">title</span>
 </pre></div>
 
 </div>
@@ -15324,7 +15326,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
+<pre>&lt;title&gt;辦公室的下午茶&lt;/title&gt;</pre>
 </div>
 
 </div>
@@ -15338,7 +15340,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;x&#39;</span> <span class="ow">in</span> <span class="n">e_list</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 取出該標籤的字串</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">string</span>
 </pre></div>
 
 </div>
@@ -15357,7 +15360,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>False</pre>
+<pre>&#39;辦公室的下午茶&#39;</pre>
 </div>
 
 </div>
@@ -15371,7 +15374,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;x&#39;</span> <span class="ow">in</span> <span class="s2">&quot;pqrstuvwxyz&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 找到那個標籤上一層的標籤</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">parent</span>
 </pre></div>
 
 </div>
@@ -15390,7 +15394,10 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
+<pre>&lt;head&gt;
+&lt;meta charset=&#34;utf-8&#34;/&gt;
+&lt;title&gt;辦公室的下午茶&lt;/title&gt;
+&lt;/head&gt;</pre>
 </div>
 
 </div>
@@ -15398,55 +15405,15 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="If-Else">If-Else<a class="anchor-link" href="#If-Else">&#182;</a></h2>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">m</span> <span class="o">=</span> <span class="mi">85</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>if 的格式：</p>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
-
-    <span class="n">code1</span> <span class="p">(</span><span class="n">only</span> <span class="n">run</span> <span class="n">when</span> <span class="n">codition</span> <span class="ow">is</span> <span class="n">true</span><span class="p">)</span>
-
-<span class="n">code2</span> <span class="p">(</span><span class="n">run</span> <span class="n">anytime</span><span class="p">)</span>
-</pre></div>
-<p>當condtion部分為true的時候<br>
-就會執行縮排（或是4個空格）內的code</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 可以用「==」來比較變數和整數是否相同</span>
-<span class="c1"># 切記在 if 內部不是使用「=」要使用「==」來做邏輯判斷</span>
-<span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">100</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;滿分&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 尋找a標籤</span>
+<span class="c1"># 但是 HTML 裡面沒有 所以回傳 None</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15463,9 +15430,43 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>滿分
+<pre>None
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 回傳「第一個」p標籤</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">p</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;p class=&#34;半糖 去冰 珍珠 奶茶&#34; id=&#34;老闆&#34;&gt;老闆的半糖去冰珍珠奶茶&lt;/p&gt;</pre>
+</div>
+
 </div>
 
 </div>
@@ -15477,10 +15478,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 「!=」運算子用做判斷是否「不相同」</span>
-<span class="c1"># 如果變數不同於右邊的數字 就會執行下面的 code</span>
-<span class="k">if</span> <span class="n">m</span> <span class="o">!=</span> <span class="mi">70</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m is not equal to 70&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 用[attribute]的方式 來抓取該標籤的屬性</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -15493,30 +15492,36 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt"></div>
+<div class="prompt output_prompt">Out[16]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>m is not equal to 70
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;半糖&#39;, &#39;去冰&#39;, &#39;珍珠&#39;, &#39;奶茶&#39;]</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
-
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="find">find<a class="anchor-link" href="#find">&#182;</a></h3>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 在if後面可以緊接「else」關鍵字</span>
-<span class="c1"># 不符合上面的狀況就會進入到 else 的 code 裡面</span>
-<span class="k">if</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">100</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;滿分&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;沒有滿分&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 尋找「第一個」p標籤</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15529,13 +15534,15 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt"></div>
+<div class="prompt output_prompt">Out[17]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>沒有滿分
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;p class=&#34;半糖 去冰 珍珠 奶茶&#34; id=&#34;老闆&#34;&gt;老闆的半糖去冰珍珠奶茶&lt;/p&gt;</pre>
 </div>
+
 </div>
 
 </div>
@@ -15547,15 +15554,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 可以使用「elif」關鍵字</span>
-<span class="c1"># 在前面的「if」判斷為 false 的時候，執行 elif 的判斷</span>
-<span class="c1"># 如果前面的 if 判斷為true，elif 就不會執行</span>
-<span class="k">if</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">100</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;滿分&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="mi">60</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;通過&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;不及格&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 尋找 id 為 &quot;Pala&quot;的標籤</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;Pala&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15568,13 +15568,15 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt"></div>
+<div class="prompt output_prompt">Out[18]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>通過
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;p class=&#34;無糖 微冰 鐵觀音&#34; id=&#34;Pala&#34;&gt;Pala的無糖微冰鐵觀音&lt;/p&gt;</pre>
 </div>
+
 </div>
 
 </div>
@@ -15583,19 +15585,12 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 一個用 if 和比較做成的例子</span>
-<span class="n">score</span> <span class="o">=</span> <span class="mi">75</span>
-<span class="k">if</span> <span class="n">score</span> <span class="o">==</span> <span class="mi">100</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Perfect&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not bad&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fail&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 錯誤 尋找class</span>
+<span class="c1"># 但是因為 class 是保留字 所以加一個底線</span>
+<span class="c1"># print(soup.find(class=&quot;無糖&quot;))</span>
 </pre></div>
 
 </div>
@@ -15611,8 +15606,12 @@ div#notebook {
 <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Not bad
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-29-a1f74783a7b6&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">3</span>
+<span class="ansi-red-fg">    print(soup.find(class=&#34;無糖&#34;))</span>
+                        ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> invalid syntax
 </pre>
 </div>
 </div>
@@ -15620,42 +15619,14 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="While-Loop">While Loop<a class="anchor-link" href="#While-Loop">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>While loop的格式是</p>
-<div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
-
-    <span class="n">code</span> <span class="p">(</span><span class="n">run</span> <span class="n">it</span> <span class="n">repeat</span> <span class="n">until</span> <span class="n">condition</span> <span class="ow">is</span> <span class="n">false</span><span class="p">)</span>
-</pre></div>
-<p>會在 condition 為 true 的狀況下
-不斷執行縮排內的 code 直到 condition 變為 false 為止</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 只要 count 符合「count &lt;= 5」 就不停執行</span>
-<span class="c1"># 記得一定要加上 count += 1 和對的終止條件</span>
-<span class="c1"># 不然會變成無限迴圈</span>
-<span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">while</span> <span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
-    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 尋找 class 為 &quot;無糖&quot;的標籤</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s2">&quot;無糖&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15668,17 +15639,15 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt"></div>
+<div class="prompt output_prompt">Out[20]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1
-2
-3
-4
-5
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;p class=&#34;無糖 去冰 綠茶&#34; id=&#34;資深前輩&#34;&gt;資深前輩的無糖去冰綠茶&lt;/p&gt;</pre>
 </div>
+
 </div>
 
 </div>
@@ -15690,15 +15659,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 假如我們要取階乘</span>
-<span class="c1"># 另外使用一個 ans 變數</span>
-<span class="c1"># 不停乘以 count ans = 1x2x3x4x5 = 120</span>
-<span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">while</span> <span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
-    <span class="n">ans</span> <span class="o">*=</span> <span class="n">count</span>
-    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 混用標籤與 id</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;心儀同事&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15711,49 +15673,28 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt"></div>
+<div class="prompt output_prompt">Out[21]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>120
-</pre>
-</div>
-</div>
 
-</div>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;p class=&#34;半糖 去冰 文山青茶&#34; id=&#34;心儀同事&#34;&gt;心儀同事的半糖去冰文山青茶&lt;/p&gt;</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="For-Loop">For Loop<a class="anchor-link" href="#For-Loop">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>For loop的格式是</p>
-<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_range</span><span class="p">:</span>
-
-    <span class="n">code</span> <span class="err">（會執行</span> <span class="p">[</span><span class="n">var</span> <span class="ow">in</span> <span class="n">a_range</span><span class="p">]</span> <span class="err">次數）</span>
-</pre></div>
-<p>for會使用一個變數，在 in 的保留字下<br>
-把後面變數 a_range 的所有狀況舉出來</p>
 
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># range(n) 代表 從 0 ~ n-1</span>
-<span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 混用標籤與 class</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">,</span><span class="n">class_</span><span class="o">=</span><span class="s2">&quot;微冰&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15772,7 +15713,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>range(0, 5)</pre>
+<pre>&lt;p class=&#34;無糖 微冰 鐵觀音&#34; id=&#34;Pala&#34;&gt;Pala的無糖微冰鐵觀音&lt;/p&gt;</pre>
 </div>
 
 </div>
@@ -15780,17 +15721,34 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="find_all">find_all<a class="anchor-link" href="#find_all">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>find 只會回傳「第一個」符合條件的標籤<br>
+使用 find_all 會回傳「所有」符合條件的標籤</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 迴圈內的語法 會執行三次 從 0 ~ n-1</span>
-<span class="c1"># for i 的 i是自己命名的變數</span>
-<span class="c1"># 專門為了這個迴圈而存在</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 找出所有 p 標籤</span>
+<span class="c1"># 會做成 list 回傳給你</span>
+<span class="n">find_all_list</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+<span class="n">find_all_list</span>
 </pre></div>
 
 </div>
@@ -15803,15 +15761,19 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt"></div>
+<div class="prompt output_prompt">Out[23]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>0
-1
-2
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;p class=&#34;半糖 去冰 珍珠 奶茶&#34; id=&#34;老闆&#34;&gt;老闆的半糖去冰珍珠奶茶&lt;/p&gt;,
+ &lt;p class=&#34;無糖 去冰 綠茶&#34; id=&#34;資深前輩&#34;&gt;資深前輩的無糖去冰綠茶&lt;/p&gt;,
+ &lt;p class=&#34;無糖 微冰 鐵觀音&#34; id=&#34;Pala&#34;&gt;Pala的無糖微冰鐵觀音&lt;/p&gt;,
+ &lt;p class=&#34;半糖 去冰 文山青茶&#34; id=&#34;心儀同事&#34;&gt;心儀同事的半糖去冰文山青茶&lt;/p&gt;,
+ &lt;p class=&#34;半糖 微冰 珍珠 紅茶&#34; id=&#34;工讀生&#34;&gt;工讀生的半糖微冰珍珠紅茶&lt;/p&gt;]</pre>
 </div>
+
 </div>
 
 </div>
@@ -15823,10 +15785,10 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 放兩個數字(a,b) i 會從 a 跑到 b - 1</span>
-<span class="c1"># 範圍 是 a &lt;= i &lt; b</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 用法和 find 相像</span>
+<span class="c1"># 一樣可以用 id 和 class 來搜尋</span>
+<span class="n">find_all_list</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="n">class_</span><span class="o">=</span><span class="s2">&quot;無糖&quot;</span><span class="p">)</span>
+<span class="n">find_all_list</span>
 </pre></div>
 
 </div>
@@ -15839,32 +15801,51 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt"></div>
+<div class="prompt output_prompt">Out[24]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>3
-4
-5
-6
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;p class=&#34;無糖 去冰 綠茶&#34; id=&#34;資深前輩&#34;&gt;資深前輩的無糖去冰綠茶&lt;/p&gt;,
+ &lt;p class=&#34;無糖 微冰 鐵觀音&#34; id=&#34;Pala&#34;&gt;Pala的無糖微冰鐵觀音&lt;/p&gt;]</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="select">select<a class="anchor-link" href="#select">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>使用 css selector 來選取元素</p>
+<ul>
+<li><a href="https://www.w3schools.com/cssref/css_selectors.asp">W3school - CSS_selector</a></li>
+</ul>
 
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 放入第三個數字是 step</span>
-<span class="c1"># 代表每一次迴圈跑完時 i 要增加多少（預設為1）</span>
-<span class="c1"># 所以出來的數字的間隔會變大 次數會減少</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 使用 css selector 搜尋</span>
+<span class="n">target</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;請輸入要尋找的目標（class使用. ID使用#）：&quot;</span><span class="p">)</span>
+<span class="n">found_list</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+<span class="n">found_list</span>
 </pre></div>
 
 </div>
@@ -15881,11 +15862,22 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>1
-4
-7
+<pre>請輸入要尋找的目標（class使用. ID使用#）：#老闆
 </pre>
 </div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[25]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;p class=&#34;半糖 去冰 珍珠 奶茶&#34; id=&#34;老闆&#34;&gt;老闆的半糖去冰珍珠奶茶&lt;/p&gt;]</pre>
+</div>
+
 </div>
 
 </div>
@@ -15897,10 +15889,10 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 可以利用 list()來把 range 轉換成list</span>
-<span class="c1"># 可以拿來建立數列</span>
-<span class="n">a_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">11</span><span class="p">))</span>
-<span class="n">a_list</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># select 不論結果是一個或是多個</span>
+<span class="c1"># 都會用 list 回傳</span>
+<span class="n">found_list</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.去冰&#39;</span><span class="p">)</span>
+<span class="n">found_list</span>
 </pre></div>
 
 </div>
@@ -15919,7 +15911,9 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[3, 4, 5, 6, 7, 8, 9, 10]</pre>
+<pre>[&lt;p class=&#34;半糖 去冰 珍珠 奶茶&#34; id=&#34;老闆&#34;&gt;老闆的半糖去冰珍珠奶茶&lt;/p&gt;,
+ &lt;p class=&#34;無糖 去冰 綠茶&#34; id=&#34;資深前輩&#34;&gt;資深前輩的無糖去冰綠茶&lt;/p&gt;,
+ &lt;p class=&#34;半糖 去冰 文山青茶&#34; id=&#34;心儀同事&#34;&gt;心儀同事的半糖去冰文山青茶&lt;/p&gt;]</pre>
 </div>
 
 </div>
@@ -15933,8 +15927,9 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 用 index 選出 list 內的數字</span>
-<span class="n">a_list</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 把需要的字串擷取出來</span>
+<span class="n">str_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">each</span><span class="o">.</span><span class="n">string</span> <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">found_list</span><span class="p">]</span>
+<span class="n">str_list</span>
 </pre></div>
 
 </div>
@@ -15953,7 +15948,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>7</pre>
+<pre>[&#39;老闆的半糖去冰珍珠奶茶&#39;, &#39;資深前輩的無糖去冰綠茶&#39;, &#39;心儀同事的半糖去冰文山青茶&#39;]</pre>
 </div>
 
 </div>
@@ -15967,8 +15962,9 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># index 為 負數 代表「倒數第幾個元素」</span>
-<span class="n">a_list</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 取出特別的屬性</span>
+<span class="n">get_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">each</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">found_list</span><span class="p">]</span>
+<span class="n">get_list</span>
 </pre></div>
 
 </div>
@@ -15987,274 +15983,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>8</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 放入「a：b」代表一個區間、一個子 list</span>
-<span class="c1"># 會取出 a ~ b - 1 的元素 組成一個list</span>
-<span class="n">a_list</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[29]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[5, 6, 7, 8]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 省略前面代表從頭到後面指定的元素</span>
-<span class="c1"># 等於 [0:5]</span>
-<span class="n">a_list</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[30]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[3, 4, 5, 6, 7]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 省略後面代表從指定元素到最後面</span>
-<span class="c1"># 等於 [3:len(list)]</span>
-<span class="n">a_list</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[31]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[6, 7, 8, 9, 10]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 可以使用 for ... in 來窮舉 list 內所有元素</span>
-<span class="c1"># 這是 python 好用且重要的一個功能 重要</span>
-<span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">b_list</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">each</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>5
-2
-7
-3
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 假如我要把 b_list 所有元素做平方</span>
-<span class="c1"># 這比較普通的做法（其他語言可能會這樣寫）</span>
-<span class="n">b_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
-<span class="n">c_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b_list</span><span class="p">:</span>
-    <span class="n">c_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
-<span class="n">c_list</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[2]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 這是稍微進階的方法（運用lambda和map） 比較複雜</span>
-<span class="n">c_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="n">b_list</span><span class="p">))</span>
-<span class="n">c_list</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[36]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 這是最高級的寫法 是python的一大特色</span>
-<span class="c1"># 建議盡可能地使用這種格式 重要</span>
-<span class="c1"># list = [ var | for var in list ]</span>
-
-<span class="n">c_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b_list</span><span class="p">]</span>
-<span class="n">c_list</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[37]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</pre>
+<pre>[&#39;老闆&#39;, &#39;資深前輩&#39;, &#39;心儀同事&#39;]</pre>
 </div>
 
 </div>
@@ -16267,856 +15996,20 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Function">Function<a class="anchor-link" href="#Function">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 把具有重複性地、太過複雜的code切分</span>
-<span class="c1"># 放到function裡面 方便多次呼叫和單元測試</span>
-<span class="k">def</span> <span class="nf">what</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;What is this?&#39;</span><span class="p">)</span>
-</pre></div>
+<p>爬蟲的技術不算太複雜<br>
+比較難的是找出我們要的資訊<br>
+還有實作的經驗<br>
+所以讓我們試著開始實作吧</p>
 
 </div>
 </div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 呼叫我們自己寫的函式</span>
-<span class="c1"># 和前面教的函式一樣</span>
-<span class="n">what</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>What is this?
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 方便多次使用</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="n">what</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>What is this?
-What is this?
-What is this?
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 可以放入變數 讓每次呼叫函式的內容都不一樣</span>
-<span class="c1"># 放入 name 代表 呼叫他的時候要給一個變數</span>
-<span class="c1"># 在函式裡面可以使用 name 來使用它</span>
-<span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;HI! </span><span class="si">{name}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 錯誤</span>
-<span class="c1"># 一定要給他一個參數</span>
-<span class="c1"># hi()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-20-9c04baa18e05&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>hi<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">TypeError</span>: hi() missing 1 required positional argument: &#39;name&#39;</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 對了～</span>
-<span class="c1"># 這樣才方便寫複雜一些的程式</span>
-<span class="c1"># 副函式是一定要會的！</span>
-<span class="n">hi</span><span class="p">(</span><span class="s2">&quot;Annie&quot;</span><span class="p">)</span>
-<span class="n">hi</span><span class="p">(</span><span class="s2">&quot;Dragon&quot;</span><span class="p">)</span>
-<span class="n">hi</span><span class="p">(</span><span class="s2">&quot;kelly&quot;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 方便多次使用</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">hi</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>HI! 0
-HI! 1
-HI! 2
-HI! 3
-HI! 4
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 可以放入兩個以上的參數</span>
-<span class="c1"># 使用 return() 回傳到呼叫他的地方</span>
-<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">add</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[29]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>17</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 例如 使用變數接起來</span>
-<span class="n">num</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">22</span><span class="p">)</span>
-<span class="n">num</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[43]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>39</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 或是 和 </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 可以多傳幾個參數 做一些複雜的運算</span>
-<span class="k">def</span> <span class="nf">total</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-        <span class="n">ans</span> <span class="o">+=</span> <span class="n">i</span>
-    <span class="k">return</span> <span class="n">ans</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">total</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[45]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>18</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 可以放入預設值</span>
-<span class="k">def</span> <span class="nf">multiList</span><span class="p">(</span><span class="n">a_list</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="n">ans_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">each</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">ans_list</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">]</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">multiList</span><span class="p">(</span><span class="n">a_list</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[48]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[6, 15, 30, 45]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">multiList</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">24</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[49]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[15, 40, 55, 120]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">multiList</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[50]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[2, 5, 10, 15]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="scope">scope<a class="anchor-link" href="#scope">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span>
-<span class="n">y1</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;x1 is </span><span class="si">{x1}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">y1 is </span><span class="si">{y1}</span><span class="s2">.&quot;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>x1 is global.
-y1 is global.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 在func內的變數（區域） 不會影響到外面的變數（全域）</span>
-<span class="k">def</span> <span class="nf">local</span><span class="p">():</span>
-    <span class="n">x1</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span>
-    <span class="n">y1</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span>
-<span class="n">local</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;x1 is </span><span class="si">{x1}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">y1 is </span><span class="si">{y1}</span><span class="s2">.&quot;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>x1 is global.
-y1 is global.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x2</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">x2</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[54]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 要存取全域變數時 使用 global 關鍵字</span>
-<span class="k">def</span> <span class="nf">local</span><span class="p">():</span>
-    <span class="k">global</span> <span class="n">x2</span>
-    <span class="n">x2</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">local</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x2</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[56]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>3</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="try-expect">try-expect<a class="anchor-link" href="#try-expect">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mulTen</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mulTen</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>5
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="s2">&quot;h&quot;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[61]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 錯誤的用法</span>
-<span class="c1"># 字串不能轉成 int</span>
-<span class="c1"># mulTen(n)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-61-005f87d0c417&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># 錯誤的用法</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-red-fg"># 字串不能轉成 int</span>
-<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>mulTen<span class="ansi-blue-fg">(</span>n<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">&lt;ipython-input-57-74beacbe1abb&gt;</span> in <span class="ansi-cyan-fg">mulTen</span><span class="ansi-blue-fg">(n)</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">def</span> mulTen<span class="ansi-blue-fg">(</span>n<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg">     </span>print<span class="ansi-blue-fg">(</span>int<span class="ansi-blue-fg">(</span>n<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">ValueError</span>: invalid literal for int() with base 10: &#39;h&#39;</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[62]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mulTen</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="c1"># 1 不會強制終止程式</span>
-        <span class="c1"># 你可以把錯誤訊息輸出 或是不理他</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Oh no! some error&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-        <span class="k">return</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mulTen</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Oh no! some error
-invalid literal for int() with base 10: &#39;h&#39;
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#32244;&#32722;">&#32244;&#32722;<a class="anchor-link" href="#&#32244;&#32722;">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">n_list</span><span class="p">):</span>
-    <span class="c1"># 輸入、初始化</span>
-
-    <span class="c1"># 做運算</span>
-    
-    <span class="c1"># 輸出所有變數</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Sum: </span><span class="si">{n_sum}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Max: </span><span class="si">{n_max}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Min: </span><span class="si">{n_min}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Pow^</span><span class="si">{n_exp}</span><span class="s2">: </span><span class="si">{n_pow}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Median: </span><span class="si">{n_med}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
 </div>
@@ -17129,28 +16022,7 @@ invalid literal for int() with base 10: &#39;h&#39;
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">count</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#20854;&#20182;">&#20854;&#20182;<a class="anchor-link" href="#&#20854;&#20182;">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[66]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
 </div>
@@ -17160,66 +16032,13 @@ invalid literal for int() with base 10: &#39;h&#39;
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[67]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[67]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>74</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[68]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[68]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[18, 13, 4, 7, 9, 9, 8, 3, 7, 20, 3, 10, 16, 19, 6, 16, 8, 15, 12, 20]</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
