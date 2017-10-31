@@ -15,6 +15,6 @@
 ## Course Notebook
 1. [Variable and Calculate](1_Variable+and+Calculate.html)
 2. [Logic and Loop](2_Logic+and+Loop.html)
-3. [file and package](html/basic_python/3_file+and+package.html)
+3. [file and package](3_file+and+package.html)
 
 <copyright>2017 python crawler course in nsysu mis by Small Dragon Chen</copyright>
