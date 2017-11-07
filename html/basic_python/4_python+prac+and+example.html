@@ -14950,192 +14950,41 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;HI! </span><span class="si">{name}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#30446;&#37636;">&#30446;&#37636;<a class="anchor-link" href="#&#30446;&#37636;">&#182;</a></h2><ul>
+<li><a href="#Something">有些東西</a></li>
+<li><a href="#Example">範例</a><ul>
+<li><a href="#Nine-x-Nine">九九乘法表</a></li>
+<li><a href="#Count">統計計算（最大最小）</a></li>
+<li><a href="#Prime">判斷質數</a></li>
+<li><a href="#table">印出表格</a></li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
 </div>
-
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">while</span> <span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">:</span>
-    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Something">Something<a class="anchor-link" href="#Something">&#182;</a></h2>
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[105]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 九九乘法表</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
-        <span class="n">temp</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">j</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="si">{i}</span><span class="s2"> x </span><span class="si">{j}</span><span class="s2"> == </span><span class="si">{temp}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1 x 1 == 1
-1 x 2 == 2
-1 x 3 == 3
-1 x 4 == 4
-1 x 5 == 5
-1 x 6 == 6
-1 x 7 == 7
-1 x 8 == 8
-1 x 9 == 9
-
-2 x 1 == 2
-2 x 2 == 4
-2 x 3 == 6
-2 x 4 == 8
-2 x 5 == 10
-2 x 6 == 12
-2 x 7 == 14
-2 x 8 == 16
-2 x 9 == 18
-
-3 x 1 == 3
-3 x 2 == 6
-3 x 3 == 9
-3 x 4 == 12
-3 x 5 == 15
-3 x 6 == 18
-3 x 7 == 21
-3 x 8 == 24
-3 x 9 == 27
-
-4 x 1 == 4
-4 x 2 == 8
-4 x 3 == 12
-4 x 4 == 16
-4 x 5 == 20
-4 x 6 == 24
-4 x 7 == 28
-4 x 8 == 32
-4 x 9 == 36
-
-5 x 1 == 5
-5 x 2 == 10
-5 x 3 == 15
-5 x 4 == 20
-5 x 5 == 25
-5 x 6 == 30
-5 x 7 == 35
-5 x 8 == 40
-5 x 9 == 45
-
-6 x 1 == 6
-6 x 2 == 12
-6 x 3 == 18
-6 x 4 == 24
-6 x 5 == 30
-6 x 6 == 36
-6 x 7 == 42
-6 x 8 == 48
-6 x 9 == 54
-
-7 x 1 == 7
-7 x 2 == 14
-7 x 3 == 21
-7 x 4 == 28
-7 x 5 == 35
-7 x 6 == 42
-7 x 7 == 49
-7 x 8 == 56
-7 x 9 == 63
-
-8 x 1 == 8
-8 x 2 == 16
-8 x 3 == 24
-8 x 4 == 32
-8 x 5 == 40
-8 x 6 == 48
-8 x 7 == 56
-8 x 8 == 64
-8 x 9 == 72
-
-9 x 1 == 9
-9 x 2 == 18
-9 x 3 == 27
-9 x 4 == 36
-9 x 5 == 45
-9 x 6 == 54
-9 x 7 == 63
-9 x 8 == 72
-9 x 9 == 81
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_list</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 使用 .sort() 來自動排序</span>
+<span class="n">n_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">]</span>
+<span class="n">n_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">n_list</span>
 </pre></div>
 
 </div>
@@ -15148,7 +14997,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[105]:</div>
 
 
 
@@ -15165,28 +15014,174 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import 函式庫名稱</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[26]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;Tue Nov  7 19:27:21 2017&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[107]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import 函式庫名稱 as 暱稱</span>
+<span class="kn">import</span> <span class="nn">time</span> <span class="k">as</span> <span class="nn">tm</span>
+<span class="n">tm</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[107]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;Tue Nov  7 21:16:54 2017&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># from 函式庫名稱 import func名稱</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">ctime</span>
+<span class="n">ctime</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[27]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;Tue Nov  7 19:28:15 2017&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[106]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># from 函式庫名稱 import func名稱 as 暱稱</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">ctime</span> <span class="k">as</span> <span class="n">ct</span>
+<span class="n">ct</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[106]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;Tue Nov  7 21:16:52 2017&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Count">Count<a class="anchor-link" href="#Count">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 計算最大最小值、總和、平均和中位數</span>
 <span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">n_list</span><span class="p">):</span>
+    <span class="n">n_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n_list</span><span class="p">)</span>
+    
     <span class="c1"># 輸入、初始化</span>
     <span class="n">n_sum</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">n_max</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">n_min</span> <span class="o">=</span> <span class="mi">10000</span>
+    <span class="n">n_min</span> <span class="o">=</span> <span class="mi">1000000</span>
     <span class="n">n_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_list</span><span class="p">)</span>
 
     <span class="c1"># 做運算</span>
@@ -15225,7 +15220,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">count</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">])</span>
@@ -15245,11 +15240,12 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Sum: 94
+<pre>[2, 3, 3, 6, 10, 10, 12, 13, 15, 20]
+Sum: 94
 Max: 20
 Min: 2
 Mean: 9.4
-Median: 6.0
+Median: 10.0
 </pre>
 </div>
 </div>
@@ -15264,6 +15260,9 @@ Median: 6.0
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 運用函式版</span>
+<span class="c1"># 使用函式 跟 自己寫 的差別：</span>
+<span class="c1">#     1. 函式比較好用，但是強烈建議你：同時一定要知道怎麼自己寫</span>
+<span class="c1">#     2. 自己寫的通常執行速度比較快、高自由度，有特別需求</span>
 <span class="kn">from</span> <span class="nn">statistics</span> <span class="k">import</span> <span class="n">median</span>
 <span class="k">def</span> <span class="nf">count2</span><span class="p">(</span><span class="n">n_list</span><span class="p">):</span>
     <span class="n">n_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">n_list</span><span class="p">)</span>
@@ -15319,6 +15318,147 @@ Median: 10.0
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Nine-x-Nine">Nine x Nine<a class="anchor-link" href="#Nine-x-Nine">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 九九乘法表</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">j</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="si">{i}</span><span class="s2"> x </span><span class="si">{j}</span><span class="s2"> = </span><span class="si">{temp}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1 x 1 = 1
+1 x 2 = 2
+1 x 3 = 3
+1 x 4 = 4
+1 x 5 = 5
+1 x 6 = 6
+1 x 7 = 7
+1 x 8 = 8
+1 x 9 = 9
+
+2 x 1 = 2
+2 x 2 = 4
+2 x 3 = 6
+2 x 4 = 8
+2 x 5 = 10
+2 x 6 = 12
+2 x 7 = 14
+2 x 8 = 16
+2 x 9 = 18
+
+3 x 1 = 3
+3 x 2 = 6
+3 x 3 = 9
+3 x 4 = 12
+3 x 5 = 15
+3 x 6 = 18
+3 x 7 = 21
+3 x 8 = 24
+3 x 9 = 27
+
+4 x 1 = 4
+4 x 2 = 8
+4 x 3 = 12
+4 x 4 = 16
+4 x 5 = 20
+4 x 6 = 24
+4 x 7 = 28
+4 x 8 = 32
+4 x 9 = 36
+
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+
+6 x 1 = 6
+6 x 2 = 12
+6 x 3 = 18
+6 x 4 = 24
+6 x 5 = 30
+6 x 6 = 36
+6 x 7 = 42
+6 x 8 = 48
+6 x 9 = 54
+
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+
+8 x 1 = 8
+8 x 2 = 16
+8 x 3 = 24
+8 x 4 = 32
+8 x 5 = 40
+8 x 6 = 48
+8 x 7 = 56
+8 x 8 = 64
+8 x 9 = 72
+
+9 x 1 = 9
+9 x 2 = 18
+9 x 3 = 27
+9 x 4 = 36
+9 x 5 = 45
+9 x 6 = 54
+9 x 7 = 63
+9 x 8 = 72
+9 x 9 = 81
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Prime">Prime<a class="anchor-link" href="#Prime">&#182;</a></h3>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
@@ -15327,7 +15467,7 @@ Median: 10.0
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 判斷是否質數</span>
 <span class="k">def</span> <span class="nf">prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="c1"># 從 2 開始列舉所有因數</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
         <span class="c1"># 如果可以整除 就回傳 False</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
@@ -15341,7 +15481,7 @@ Median: 10.0
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 列出 100 以內的質數</span>
@@ -15371,6 +15511,164 @@ Median: 10.0
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="table">table<a class="anchor-link" href="#table">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[110]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">table1</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">):</span>
+    <span class="n">all_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+        <span class="n">each_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+            <span class="n">each_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
+        <span class="n">all_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">each_list</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">all_list</span>
+
+<span class="c1"># 呼叫table1</span>
+<span class="n">table1</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[110]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[[0, 1, 2, 3, 4, 5, 6, 7],
+ [1, 2, 3, 4, 5, 6, 7, 8],
+ [2, 3, 4, 5, 6, 7, 8, 9],
+ [3, 4, 5, 6, 7, 8, 9, 10]]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[112]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">table2</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">):</span>
+    <span class="n">all_list</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+        <span class="c1"># 可以看看 each_list = list(range(col))</span>
+        <span class="n">each_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">i</span> <span class="o">+</span> <span class="n">col</span><span class="p">))</span>
+        <span class="n">all_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">each_list</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">all_list</span>
+
+<span class="c1"># 呼叫table2</span>
+<span class="n">table2</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[112]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[[0, 1, 2, 3, 4, 5, 6, 7, 8],
+ [1, 2, 3, 4, 5, 6, 7, 8, 9],
+ [2, 3, 4, 5, 6, 7, 8, 9, 10],
+ [3, 4, 5, 6, 7, 8, 9, 10, 11],
+ [4, 5, 6, 7, 8, 9, 10, 11, 12],
+ [5, 6, 7, 8, 9, 10, 11, 12, 13]]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[113]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">table3</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">):</span>
+    <span class="n">all_list</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="p">]</span>
+    <span class="k">return</span> <span class="n">all_list</span>
+
+<span class="c1"># 呼叫table3</span>
+<span class="n">table3</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[113]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[[0, 1, 2, 3, 4, 5, 6, 7, 8],
+ [1, 2, 3, 4, 5, 6, 7, 8, 9],
+ [2, 3, 4, 5, 6, 7, 8, 9, 10],
+ [3, 4, 5, 6, 7, 8, 9, 10, 11],
+ [4, 5, 6, 7, 8, 9, 10, 11, 12],
+ [5, 6, 7, 8, 9, 10, 11, 12, 13],
+ [6, 7, 8, 9, 10, 11, 12, 13, 14],
+ [7, 8, 9, 10, 11, 12, 13, 14, 15],
+ [8, 9, 10, 11, 12, 13, 14, 15, 16]]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#26399;&#20013;&#32771;&#21152;&#27833;&#65281;">&#26399;&#20013;&#32771;&#21152;&#27833;&#65281;<a class="anchor-link" href="#&#26399;&#20013;&#32771;&#21152;&#27833;&#65281;">&#182;</a></h1>
+</div>
+</div>
 </div>
     </div>
   </div>
