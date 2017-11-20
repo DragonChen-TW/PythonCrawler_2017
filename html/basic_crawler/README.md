@@ -3,8 +3,8 @@
 獲取網頁原始碼後，開始解析他，找到我們要的資料，並儲存起來。
 
 ## Resource
- - [bryanbigdata 爬蟲基礎_1](http://blog.bryanbigdata.com/2014/12/python-crawler.html)
- - [bryanbigdata 爬蟲基礎_2](http://blog.bryanbigdata.com/2014/12/python-crawler_29.html)
+ - [bryan's bigdata 爬蟲實務（上）—網頁元件解析](http://blog.bryanbigdata.com/2014/12/python-crawler.html)
+ - [bryan's bigdata 爬蟲實務（下）—爬蟲策略以及設定](http://blog.bryanbigdata.com/2014/12/python-crawler_29.html)
 
 
 ## Course Notebook
