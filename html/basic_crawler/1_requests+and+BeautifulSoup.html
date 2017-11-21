@@ -14968,6 +14968,20 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#31684;&#20363;&#32178;&#31449;">&#31684;&#20363;&#32178;&#31449;<a class="anchor-link" href="#&#31684;&#20363;&#32178;&#31449;">&#182;</a></h2><ul>
+<li>NewYork Time <a href="https://www.nytimes.com">https://www.nytimes.com</a></li>
+<li>Youtube發燒頻道 <a href="https://www.youtube.com/feed/trending">https://www.youtube.com/feed/trending</a></li>
+<li>卡提諾小說 <a href="https://ck101.com/forum-237-1.html">https://ck101.com/forum-237-1.html</a></li>
+<li>公視新聞 <a href="https://news.pts.org.tw/list/0">https://news.pts.org.tw/list/0</a></li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
@@ -15017,7 +15031,7 @@ div#notebook {
 <p>user-agent是提供給網站了解使用者的基本資訊（電腦系統、使用哪款瀏覽器...等）<br>
 部分網站會檢查user-agent字串內容來防止惡意爬蟲<br>
 可以從<a href="https://www.whoishostingthis.com/tools/user-agent/">這裡</a>查詢你電腦、瀏覽器的user-agent字串<br>
-或是放入簡單的資訊（有的網站是會檢查user-agent有沒有內容而已 空白的也會給你過XD）</p>
+或是放入簡單的資訊（有的網站只會檢查user-agent有沒有而已）</p>
 
 </div>
 </div>
@@ -15035,7 +15049,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 透過 requests 來幫我傳送 ge t請求</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 透過 requests 來幫我傳送 get請求</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 </pre></div>
 
@@ -15108,7 +15122,7 @@ res有一些基本的屬性可以使用</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 回傳的狀況的數值</span>
-<span class="c1"># 常用的 200 是 一切順利 404 是 not found</span>
+<span class="c1"># 常用的 =&gt; 200 是 一切順利 404 是 not found</span>
 <span class="n">res</span><span class="o">.</span><span class="n">status_code</span>
 </pre></div>
 
@@ -15473,13 +15487,21 @@ res有一些基本的屬性可以使用</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="find">find<a class="anchor-link" href="#find">&#182;</a></h3>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 用[attribute]的方式 來抓取該標籤的屬性</span>
-<span class="n">soup</span><span class="o">.</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 尋找「第一個」p標籤</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15498,7 +15520,7 @@ res有一些基本的屬性可以使用</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;半糖&#39;, &#39;去冰&#39;, &#39;珍珠&#39;, &#39;奶茶&#39;]</pre>
+<pre>&lt;p class=&#34;半糖 去冰 珍珠 奶茶&#34; id=&#34;老闆&#34;&gt;老闆的半糖去冰珍珠奶茶&lt;/p&gt;</pre>
 </div>
 
 </div>
@@ -15506,22 +15528,14 @@ res有一些基本的屬性可以使用</p>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="find">find<a class="anchor-link" href="#find">&#182;</a></h3>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 尋找「第一個」p標籤</span>
-<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 尋找 id 為 &quot;Pala&quot;的標籤</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;Pala&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15540,7 +15554,7 @@ res有一些基本的屬性可以使用</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;p class=&#34;半糖 去冰 珍珠 奶茶&#34; id=&#34;老闆&#34;&gt;老闆的半糖去冰珍珠奶茶&lt;/p&gt;</pre>
+<pre>&lt;p class=&#34;無糖 微冰 鐵觀音&#34; id=&#34;Pala&#34;&gt;Pala的無糖微冰鐵觀音&lt;/p&gt;</pre>
 </div>
 
 </div>
@@ -15554,40 +15568,6 @@ res有一些基本的屬性可以使用</p>
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 尋找 id 為 &quot;Pala&quot;的標籤</span>
-<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;Pala&quot;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[18]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;p class=&#34;無糖 微冰 鐵觀音&#34; id=&#34;Pala&#34;&gt;Pala的無糖微冰鐵觀音&lt;/p&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 錯誤 尋找class</span>
 <span class="c1"># 但是因為 class 是保留字 所以加一個底線</span>
 <span class="c1"># print(soup.find(class=&quot;無糖&quot;))</span>
@@ -15597,23 +15577,35 @@ res有一些基本的屬性可以使用</p>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 尋找 class 為 &quot;無糖&quot;的標籤</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s2">&quot;無糖&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
 <div class="output_wrapper">
 <div class="output">
 
 
 <div class="output_area">
 
-<div class="prompt"></div>
+<div class="prompt output_prompt">Out[19]:</div>
 
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-29-a1f74783a7b6&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">3</span>
-<span class="ansi-red-fg">    print(soup.find(class=&#34;無糖&#34;))</span>
-                        ^
-<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> invalid syntax
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;p class=&#34;無糖 去冰 綠茶&#34; id=&#34;資深前輩&#34;&gt;資深前輩的無糖去冰綠茶&lt;/p&gt;</pre>
 </div>
+
 </div>
 
 </div>
@@ -15625,8 +15617,8 @@ res有一些基本的屬性可以使用</p>
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 尋找 class 為 &quot;無糖&quot;的標籤</span>
-<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s2">&quot;無糖&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 混用標籤與 id</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;心儀同事&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15645,40 +15637,6 @@ res有一些基本的屬性可以使用</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;p class=&#34;無糖 去冰 綠茶&#34; id=&#34;資深前輩&#34;&gt;資深前輩的無糖去冰綠茶&lt;/p&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 混用標籤與 id</span>
-<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;心儀同事&quot;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[21]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
 <pre>&lt;p class=&#34;半糖 去冰 文山青茶&#34; id=&#34;心儀同事&#34;&gt;心儀同事的半糖去冰文山青茶&lt;/p&gt;</pre>
 </div>
 
@@ -15690,7 +15648,7 @@ res有一些基本的屬性可以使用</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 混用標籤與 class</span>
@@ -15707,7 +15665,7 @@ res有一些基本的屬性可以使用</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[22]:</div>
+<div class="prompt output_prompt">Out[21]:</div>
 
 
 
@@ -15742,7 +15700,7 @@ res有一些基本的屬性可以使用</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 找出所有 p 標籤</span>
@@ -15761,7 +15719,7 @@ res有一些基本的屬性可以使用</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[23]:</div>
+<div class="prompt output_prompt">Out[22]:</div>
 
 
 
@@ -15782,7 +15740,7 @@ res有一些基本的屬性可以使用</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 用法和 find 相像</span>
@@ -15801,7 +15759,7 @@ res有一些基本的屬性可以使用</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[24]:</div>
+<div class="prompt output_prompt">Out[23]:</div>
 
 
 
@@ -15821,181 +15779,6 @@ res有一些基本的屬性可以使用</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="select">select<a class="anchor-link" href="#select">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>使用 css selector 來選取元素</p>
-<ul>
-<li><a href="https://www.w3schools.com/cssref/css_selectors.asp">W3school - CSS_selector</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 使用 css selector 搜尋</span>
-<span class="n">target</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;請輸入要尋找的目標（class使用. ID使用#）：&quot;</span><span class="p">)</span>
-<span class="n">found_list</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-<span class="n">found_list</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>請輸入要尋找的目標（class使用. ID使用#）：#老闆
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[25]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&lt;p class=&#34;半糖 去冰 珍珠 奶茶&#34; id=&#34;老闆&#34;&gt;老闆的半糖去冰珍珠奶茶&lt;/p&gt;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># select 不論結果是一個或是多個</span>
-<span class="c1"># 都會用 list 回傳</span>
-<span class="n">found_list</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;.去冰&#39;</span><span class="p">)</span>
-<span class="n">found_list</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[26]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&lt;p class=&#34;半糖 去冰 珍珠 奶茶&#34; id=&#34;老闆&#34;&gt;老闆的半糖去冰珍珠奶茶&lt;/p&gt;,
- &lt;p class=&#34;無糖 去冰 綠茶&#34; id=&#34;資深前輩&#34;&gt;資深前輩的無糖去冰綠茶&lt;/p&gt;,
- &lt;p class=&#34;半糖 去冰 文山青茶&#34; id=&#34;心儀同事&#34;&gt;心儀同事的半糖去冰文山青茶&lt;/p&gt;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 把需要的字串擷取出來</span>
-<span class="n">str_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">each</span><span class="o">.</span><span class="n">string</span> <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">found_list</span><span class="p">]</span>
-<span class="n">str_list</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[27]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;老闆的半糖去冰珍珠奶茶&#39;, &#39;資深前輩的無糖去冰綠茶&#39;, &#39;心儀同事的半糖去冰文山青茶&#39;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 取出特別的屬性</span>
-<span class="n">get_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">each</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">found_list</span><span class="p">]</span>
-<span class="n">get_list</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[28]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;老闆&#39;, &#39;資深前輩&#39;, &#39;心儀同事&#39;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>爬蟲的技術不算太複雜<br>
 比較難的是找出我們要的資訊<br>
 還有實作的經驗<br>
@@ -16003,19 +15786,6 @@ res有一些基本的屬性可以使用</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
