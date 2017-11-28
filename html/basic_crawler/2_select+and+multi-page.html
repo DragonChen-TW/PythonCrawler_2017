@@ -14966,6 +14966,18 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#31684;&#20363;&#32178;&#31449;">&#31684;&#20363;&#32178;&#31449;<a class="anchor-link" href="#&#31684;&#20363;&#32178;&#31449;">&#182;</a></h2><ul>
+<li>公視新聞 <a href="https://news.pts.org.tw/list/0">https://news.pts.org.tw/list/0</a></li>
+<li>練習網址 <a href="http://smalldragon-r.pancakeapps.com/some_news.html">http://smalldragon-r.pancakeapps.com/some_news.html</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="select">select<a class="anchor-link" href="#select">&#182;</a></h3>
 </div>
 </div>
@@ -15032,6 +15044,7 @@ div#notebook {
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 使用 css selector 搜尋</span>
 <span class="n">found_list</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;#Pala&#39;</span><span class="p">)</span>
+             <span class="c1">#soup.find(id=&#39;Pala&#39;)</span>
 <span class="n">found_list</span>
 </pre></div>
 
@@ -15207,7 +15220,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 把 url 傳進來</span>
@@ -15225,7 +15238,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 先用 temp 抓取到所有新聞的網頁原始碼</span>
@@ -15239,27 +15252,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 利用 bs 選出 title 做成 list</span>
 <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
-<span class="n">title_list</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;list-news-title&#39;</span><span class="p">)</span>
+<span class="n">title_list</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;list-news-title&#39;</span><span class="p">)</span> 
 <span class="n">title_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">each</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">title_list</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 選到了 我們用前五個就好</span>
-<span class="n">title_list</span> <span class="o">=</span> <span class="n">title_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 <span class="n">title_list</span>
 </pre></div>
 
@@ -15283,6 +15282,54 @@ div#notebook {
  &lt;a href=&#34;https://news.pts.org.tw/article/378163&#34;&gt;新北之外五都補助私幼學費 民團表抗議&lt;/a&gt;,
  &lt;a href=&#34;https://news.pts.org.tw/article/378164&#34;&gt;歐洲議會表決通過 展延&#34;嘉磷賽&#34;執照5年&lt;/a&gt;,
  &lt;a href=&#34;https://news.pts.org.tw/article/378165&#34;&gt;雞蛋&#34;芬普尼&#34;農藥容許量 放寬至10ppb&lt;/a&gt;,
+ &lt;a href=&#34;https://news.pts.org.tw/article/378166&#34;&gt;勞團:勞基修法前 多工會被打壓.成員遭解僱&lt;/a&gt;,
+ &lt;a href=&#34;https://news.pts.org.tw/article/378167&#34;&gt;強化安全 柏林耶誕市集遇襲近1年後重開放&lt;/a&gt;,
+ &lt;a href=&#34;https://news.pts.org.tw/article/378168&#34;&gt;週四漸降溫 氣象局估今年冬季偏暖&lt;/a&gt;,
+ &lt;a href=&#34;https://news.pts.org.tw/article/378169&#34;&gt;環團指控 環署恐刻意美化PM2.5數值&lt;/a&gt;,
+ &lt;a href=&#34;https://news.pts.org.tw/article/378170&#34;&gt;中東.非洲極端氣候 引發戰爭.社會動盪&lt;/a&gt;,
+ &lt;a href=&#34;https://news.pts.org.tw/article/378171&#34;&gt;日本福井縣宣布 重啟大飯核電廠3號.4號機&lt;/a&gt;,
+ &lt;a href=&#34;https://news.pts.org.tw/article/378172&#34;&gt;台積電遭降評 台股早盤跌破10700點&lt;/a&gt;,
+ &lt;a href=&#34;https://news.pts.org.tw/article/378173&#34;&gt;瑞士銀行預測 今年台灣GDP為2.4%&lt;/a&gt;,
+ &lt;a href=&#34;https://news.pts.org.tw/article/378174&#34;&gt;台中市要推動台中機場 成廉航營運中心&lt;/a&gt;,
+ &lt;a href=&#34;https://news.pts.org.tw/article/378175&#34;&gt;慶富獵雷艦案保證金 銀行團決定不展延&lt;/a&gt;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 選到了 我們用前五個就好</span>
+<span class="n">title_list</span> <span class="o">=</span> <span class="n">title_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">title_list</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[24]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;a href=&#34;https://news.pts.org.tw/article/378162&#34;&gt;李明哲遭中國判刑5年 當庭放棄上訴&lt;/a&gt;,
+ &lt;a href=&#34;https://news.pts.org.tw/article/378163&#34;&gt;新北之外五都補助私幼學費 民團表抗議&lt;/a&gt;,
+ &lt;a href=&#34;https://news.pts.org.tw/article/378164&#34;&gt;歐洲議會表決通過 展延&#34;嘉磷賽&#34;執照5年&lt;/a&gt;,
+ &lt;a href=&#34;https://news.pts.org.tw/article/378165&#34;&gt;雞蛋&#34;芬普尼&#34;農藥容許量 放寬至10ppb&lt;/a&gt;,
  &lt;a href=&#34;https://news.pts.org.tw/article/378166&#34;&gt;勞團:勞基修法前 多工會被打壓.成員遭解僱&lt;/a&gt;]</pre>
 </div>
 
@@ -15294,7 +15341,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 先創個 out 資料夾</span>
@@ -15309,7 +15356,26 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">title_list</span><span class="p">:</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">get_page</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">))</span>
+    
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;out/&#39;</span> <span class="o">+</span> <span class="n">title</span><span class="o">.</span><span class="n">string</span> <span class="o">+</span> <span class="s1">&#39;.html&#39;</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">html</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="n">html</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 利用get_page函式 存每個頁面</span>
@@ -15329,7 +15395,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 再來寫個負責parser的func吧!</span>
@@ -15337,6 +15403,7 @@ div#notebook {
     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span><span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
     
     <span class="n">content</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;article-content&#39;</span><span class="p">)</span>
+    
     <span class="k">return</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
 </pre></div>
 
@@ -15347,7 +15414,55 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">title_list</span><span class="p">:</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;out/&#39;</span> <span class="o">+</span> <span class="n">title</span><span class="o">.</span><span class="n">string</span>
+    
+    <span class="n">html</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span> <span class="o">+</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">get_content</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="n">html</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">get_text</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">40</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>台灣NGO工作者李明哲今天被中國政府以顛覆國家政權罪判處5年徒刑，李明哲當庭表示
+
+除了新北市之外其他五都，近來紛紛宣布從明年起、補助私立幼兒園學費，而且補助對象還
+
+台灣用很多的除草劑年年春，裡面的 嘉磷賽&#34;，被世界衛生組織認定為可能致癌物。由於
+
+雞蛋是否要制定農藥芬普尼殘留容許量？衛福部與農委會開跨部會專家會議，經過討論達成
+
+勞動法修法要鬆綁一例一休，將彈性工時交由勞資協商，不過，勞工團體則出面控訴，在修
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">title_list</span><span class="p">:</span>
@@ -15369,7 +15484,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 更快速的方法 不存成檔案 直接放到parser裡面</span>
@@ -15377,7 +15492,7 @@ div#notebook {
     <span class="n">html</span> <span class="o">=</span> <span class="n">get_page</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">))</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">get_content</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">get_text</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">get_text</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">40</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 
@@ -15395,15 +15510,15 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>台灣NGO工作者李明哲今天被中國政府以顛覆國家政權罪判處5年徒刑，李明哲當庭表示接受判決也不會上訴，
+<pre>台灣NGO工作者李明哲今天被中國政府以顛覆國家政權罪判處5年徒刑，李明哲當庭表示
 
-除了新北市之外其他五都，近來紛紛宣布從明年起、補助私立幼兒園學費，而且補助對象還向下延伸到2歲，今天
+除了新北市之外其他五都，近來紛紛宣布從明年起、補助私立幼兒園學費，而且補助對象還
 
-台灣用很多的除草劑年年春，裡面的 嘉磷賽&#34;，被世界衛生組織認定為可能致癌物。由於&#34;嘉磷賽&#34;在歐洲的使
+台灣用很多的除草劑年年春，裡面的 嘉磷賽&#34;，被世界衛生組織認定為可能致癌物。由於
 
-雞蛋是否要制定農藥芬普尼殘留容許量？衛福部與農委會開跨部會專家會議，經過討論達成共識。考量蛋雞飼料進
+雞蛋是否要制定農藥芬普尼殘留容許量？衛福部與農委會開跨部會專家會議，經過討論達成
 
-勞動法修法要鬆綁一例一休，將彈性工時交由勞資協商，不過，勞工團體則出面控訴，在修法前，已經有多個工會
+勞動法修法要鬆綁一例一休，將彈性工時交由勞資協商，不過，勞工團體則出面控訴，在修
 
 </pre>
 </div>
@@ -15415,7 +15530,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 世界快</span>
@@ -15434,7 +15549,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[69]:</div>
+<div class="prompt output_prompt">Out[17]:</div>
 
 
 
