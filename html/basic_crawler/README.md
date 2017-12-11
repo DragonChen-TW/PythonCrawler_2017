@@ -10,7 +10,8 @@
 ## Course Notebook
 1. [requests and BeautifulSoup](1_requests+and+BeautifulSoup.html)
 2. [select and multi-page](2_select+and+multi-page.html)
-2. [multiple-page full](2_multiple-page full.html)
+- [multiple-page full](2_multiple-page full.html)是上一章節multi-page的完整版
 3. [Open Data](3_open+data.html)
+4. [pass value and image crawler](4_pass+value+and+omg+crawler.html)
 
 <copyright>2017 python crawler course in nsysu mis by Small Dragon Chen</copyright>
